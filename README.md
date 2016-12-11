@@ -1,132 +1,22 @@
-WP Quick Install 1.4.2
-================
+# WP Quick Install
 
 WP Quick Install is the easiest way to install WordPress.
 
-A lightweight script which automatically downloads and install WordPress, plugins and themes you want.
+This project is a lite rewrite of main [WP Quick Install](https://github.com/GeekPress/WP-Quick-Install) for even easier install without knowledge of technical things like database access, etc.
 
-Simply download the .zip archive et go to *wp-quick-install/index.php*
+Just 5 mandatory fields to fill and you're good to go !
 
-Changelog
-================
-
-1.4.2
------------
-* Delete Tweentyfifteen & Tweentysixteen themes
-
-1.4.1
------------
-* Fix quote issue with WordPress.com API Key
-
-1.4
------------
-* Fix database issue since WordPress 4.1
-* You can add your WordPress.com API Key
-
-1.3.3
------------
-
-* Add SSL compatibility
-* Remove SSL function (cause trouble with process installation)
-
-1.3.2
------------
-
-* Add a script header
-* Security improvement
-
-1.3.1
------------
-
-* Fix error for PHP > 5.5: Strict standards: Only variables should be passed by reference in ../wp-quick-install/index.php on line 10
-
-1.3
------------
-
-* Possiblity to select WordPress language installation
-* Permaling management
+![wp quick install](https://cloud.githubusercontent.com/assets/3679080/21081945/4c842694-bfd1-11e6-8639-a3b3ed2fa656.png)
 
 
-1.2.8.1
------------
+## Install
 
-* You can now declare articles to be generated via data.ini file
-* Fix bug on new articles
-* You can now select the revision by articles
-
-1.2.8
------------
-
-* Media management
-
-1.2.7.2
------------
-
-* Security : Forbiden access to data.ini from the browser
-
-1.2.7.1
------------
-
-* noindex nofollow tag.
-
-1.2.7
------------
-
-* Premium extension by adding archives in plugins folder
-* You can enable extension after installation
-* Auto supression of Hello Dolly extension
-* You can add a theme and enable it
-* You can delete Twenty Elever and Twenty Ten
-
-1.2.6
------------
-
-* Fix a JS bug with data.ini
-
-1.2.5
------------
-
-* You can delete the default content added by WordPress
-* You can add new pages with data.ini
-* Data.ini update
-
-1.2.4
------------
-
-* Two new debug options : *Display errors* (WP_DEBUG_DISPLAY) and *Write errors in a log file* (WP_DEBUG_LOG)
-
-1.2.3
------------
-
-* SEO Fix bug
-* Automatic deletion of licence.txt and readme.html
-
-1.2.2
------------
-
-* Deletion of all exec() fucntions
-* Unzip WordPress and plugins with ZipArchive class
-* Using scandir() and rename() to move WordPress files
-
-1.2.1
------------
-
-* Checking chmod on parent folder
-* Adding a link to website and admin if success
-
-1.2
------------
-
-* You can now pre-configure the form with data.ini
+1. This version of WPQI works for subdomain URL installation, which is more comfortable/cleanier wordpress management, so you must configure DNS with special wildcard subdomains, i.e. add `*.wp` name record. This should endly have this line configured : `*.wp.example.com. 1800 IN A <YOUR_SERVER_IP>`
+1. Unzip the installator under root web directory of your choice, and create another empty directory which will contain all your wordpress farm sites
+1. Set-up your nginx/apache server from *server-confs* directory, one site for the installator, another for wordpress farm sites. This last one must be writeable by unix web user (commonly www-data). For the installator, set write permissions only for cache folder. The installator access must be keep secret and protected by your own care.
+1. Finally create *data.ini* file by copy from *data.sample.ini*, and set useful informations, as mainly master domain, wordpress sites directory, language, root mysql user access (needed for automatic database creation), default theme and plugins. You can add your custom/premium themes and plugins into corresponding installator subdirectories.
 
 
-1.1
------------
+## License
 
-* Code Optimisation
-
-
-1.0
------------
-
-* Initial Commit
+This project is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
