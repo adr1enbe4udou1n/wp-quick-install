@@ -109,21 +109,21 @@ if (isset($_GET['action'])) {
             if ($zip->open(WPQI_CACHE_CORE_PATH . 'wordpress-' . $wp->version . '-' . $language  . '.zip') === true) {
 
                 // Let's unzip
-                $zip->extractTo('.');
+                $zip->extractTo(WPQI_CACHE_CORE_PATH);
                 $zip->close();
 
                 // We scan the folder
-                $files = scandir('wordpress');
+                $files = scandir(WPQI_CACHE_CORE_PATH . 'wordpress');
 
                 // We remove the "." and ".." from the current folder and its parent
                 $files = array_diff($files, array( '.', '..' ));
 
                 // We move the files and folders
                 foreach ($files as $file) {
-                    rename('wordpress/' . $file, $directory . '/' . $file);
+                    rename(WPQI_CACHE_CORE_PATH . 'wordpress/' . $file, $directory . '/' . $file);
                 }
 
-                rmdir('wordpress'); // We remove WordPress folder
+                rmdir(WPQI_CACHE_CORE_PATH . 'wordpress'); // We remove WordPress folder
                 unlink($directory . '/wp-content/plugins/hello.php'); // We remove Hello Dolly plugin
             }
 
