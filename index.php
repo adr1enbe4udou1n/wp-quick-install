@@ -305,10 +305,7 @@ if (isset($_GET['action'])) {
                 $plugins_dir = $directory . '/wp-content/plugins/';
 
                 if (!empty($data_file['plugins'])) {
-                    $plugins = explode(";", $data_file['plugins']);
-                    $plugins = array_map('trim', $plugins);
-
-                    foreach ($plugins as $plugin) {
+                    foreach ($data_file['plugins'] as $plugin) {
 
                         // We retrieve the plugin XML file to get the link to downlad it
                         $plugin_repo = file_get_contents("http://api.wordpress.org/plugins/info/1.0/$plugin.json");
